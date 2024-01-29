@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         --"neovim/nvim-lspconfig",
     }
+    use 'p00f/clangd_extensions.nvim'
     --code Runner
     use 'CRAG666/code_runner.nvim'
     --ai --bullshit doesnt work fucks up code completion with wierd mistakes like chatgpty

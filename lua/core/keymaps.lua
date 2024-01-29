@@ -28,7 +28,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.o.background  = "dark"
 --vim.cmd[[colorscheme quiet]]
-vim.opt.updatetime = 10000--setting to low reduces lifespan of ssd and too high feels laggy uses time for written to disk
+vim.opt.updatetime = 3000 -- CursorStop Updatetime
 
 vim.opt.colorcolumn = "80"
 
