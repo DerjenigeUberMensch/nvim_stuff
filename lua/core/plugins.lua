@@ -14,6 +14,8 @@ return require('packer').startup(function(use)
     --Where the stuff is located
     --/.local/share/nvim/site/pack/packer/start/
     use 'wbthomason/packer.nvim'
+    -- set colour scheme first
+    use "dzfrias/noir.nvim"
     use 'nvim-tree/nvim-tree.lua'
     use({
         "L3MON4D3/LuaSnip",
@@ -24,6 +26,7 @@ return require('packer').startup(function(use)
         run = "make install_jsregexp",
     })
     use 'hrsh7th/nvim-cmp'
+    -- broken with *
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
@@ -69,7 +72,6 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     -- "phha/zenburn.nvim",
     use "lukas-reineke/lsp-format.nvim"
-    use "dzfrias/noir.nvim"
 
     --autoclose
     use 'm4xshen/autoclose.nvim'
@@ -79,7 +81,10 @@ return require('packer').startup(function(use)
     use { 'mhartington/formatter.nvim' }
     --nodejs required
     use "turbio/bracey.vim"
-
+    use {
+        'kkoomen/vim-doge',
+        run = ':call doge#install()'
+    }
     --Show tabs
     use "lukas-reineke/indent-blankline.nvim"
     ----------------

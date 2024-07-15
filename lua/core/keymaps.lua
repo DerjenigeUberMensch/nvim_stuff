@@ -21,13 +21,11 @@ vim.opt.wrap = true
 vim.o.expandtab = true -- Open NeoVim In fullscreen when opened
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-
-vim.opt.termguicolors = false
-vim.o.termguicolors = false
-vim.opt.scrolloff = 8
+vim.opt.termguicolors = true
+vim.o.termguicolors = true
+vim.opt.scrolloff = 25
 vim.opt.signcolumn = "yes"
 vim.o.background  = "dark"
---vim.cmd[[colorscheme quiet]]
 vim.opt.updatetime = 3000 -- CursorStop Updatetime
 
 vim.opt.colorcolumn = "80"
@@ -37,10 +35,7 @@ vim.opt.colorcolumn = "80"
 --Xserver xclip
 --wayland wl-clipboard
 vim.opt.clipboard = "unnamedplus"
-
-
 --keymaps :h map-listing
 --{'n', 'v'} --multiple modes
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>') --leader key
 vim.keymap.set('n', '<F5>', ':RunCode<CR>')
-vim.keymap.set('n', "<leader>f",":prettier --stdin-filepath %<CR>",  { noremap = true, silent = false})
