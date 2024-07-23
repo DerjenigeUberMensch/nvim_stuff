@@ -25,12 +25,17 @@ return require('packer').startup(function(use)
         -- install jsregexp (optional!:).
         run = "make install_jsregexp",
     })
+
     use 'hrsh7th/nvim-cmp'
     -- broken with *
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'petertriho/cmp-git'
+    -- vim rooter
+    use 'airblade/vim-rooter'
+
     use {
         'neovim/nvim-lspconfig',
         requires = {
@@ -73,8 +78,20 @@ return require('packer').startup(function(use)
     -- "phha/zenburn.nvim",
     use "lukas-reineke/lsp-format.nvim"
 
-    --autoclose
+
+    -- better habits or somethign
+    use 'm4xshen/hardtime.nvim'
+
+    --autoclose (backup if break (works fully))
     use 'm4xshen/autoclose.nvim'
+    use 
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
     --Syntax checker
     use 'dense-analysis/ale'
     -- format

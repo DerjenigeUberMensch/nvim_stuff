@@ -1,0 +1,2 @@
+-- Dont use autoclose already exists
+--require("autoclose").setup({})
