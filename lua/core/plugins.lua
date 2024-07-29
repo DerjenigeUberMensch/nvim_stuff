@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-calc'
     use 'petertriho/cmp-git'
     -- vim rooter
     use 'airblade/vim-rooter'
@@ -83,8 +84,8 @@ return require('packer').startup(function(use)
     use 'm4xshen/hardtime.nvim'
 
     --autoclose (backup if break (works fully))
-    use 'm4xshen/autoclose.nvim'
-    use 
+    --use 'm4xshen/autoclose.nvim'
+    use
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",

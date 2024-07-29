@@ -10,8 +10,7 @@ end
 
 cmp.setup({
     completion =
-    {
-        completeopt = "menu,menuone,preview,noselect"
+    {   completeopt = "menu,menuone,preview,noselect"
     },
     snippet =
     {
@@ -22,7 +21,7 @@ cmp.setup({
     },
     window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -55,11 +54,12 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         -- order -> priority
+        { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
         { name = 'buffer' },
         { name = 'path'},
-        { name = 'cmdline' },
-        { name = 'nvim_lsp' },
+        { name = 'calc' },
+        --{ name = 'cmdline' },
     })
 })
 

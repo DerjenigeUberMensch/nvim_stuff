@@ -45,8 +45,6 @@ local on_attach = function(_, _)
 end
 
 
---local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- Auto hover stuff
 -- affected by: vim.opt.updatetime = 2500 -- CursorStop Updatetime
 -- [=====[ 
@@ -94,17 +92,5 @@ lspconfig.lua_ls.setup ({
 lspconfig.clangd.setup ({
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        C = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                    [vim.fn.stdpath "config" .. "/lua"] = true,
-                },
-            },
-        },
-    }
+    root_dir = lspconfig.util.root_pattern('.git'),
 })
