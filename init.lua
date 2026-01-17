@@ -1,4 +1,4 @@
 --Vim RC
-require("core.plugins")
-require("core.config")
 require("core.keymaps")
+require("core.config")
+require("core.plugins")

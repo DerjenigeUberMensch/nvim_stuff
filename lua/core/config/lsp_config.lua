@@ -1,7 +1,16 @@
-local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
-lspconfig.ts_ls.setup {}
-lspconfig.rust_analyzer.setup {}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+vim.lsp.enable("pyright")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("clangd")
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, { focusable = false }
+)
+
+
 require("mason").setup({
     ui = {
         icons = {
@@ -20,15 +29,6 @@ require("mason-lspconfig").setup({
     },
 })
 
-require('mason-lspconfig').setup_handlers({
-  function(server)
-    lspconfig[server].setup({})
-  end,
-})
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, { focusable = false }
-)
 
 local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -43,6 +43,18 @@ local on_attach = function(_, _)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
     vim.keymap.set('n', 'K', vim.lsp.buf.signature_help, {})
 end
+
+-- This auto adds the setup stuff
+vim.lsp.config("mason-lspconfig", {
+    function(server)
+        lspconfig[server].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+        })
+  end,
+})
+
+
 
 
 -- Auto hover stuff
@@ -68,29 +80,9 @@ vim.api.nvim_create_autocmd("CursorMoved", ({
     end
 }))
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.lua_ls.setup ({
+vim.lsp.config("clangd", {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" },
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                    [vim.fn.stdpath "config" .. "/lua"] = true,
-                },
-            },
-        },
-    }
-})
-
-
-lspconfig.clangd.setup ({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern('.git'),
+    root_markers = { ".clangd", "compile_commands.json", ".git" }
 })

@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 vim.opt.nu = true --line numbers
 vim.opt.relativenumber = true
 vim.cmd[[set noswapfile]] --no swap prompt

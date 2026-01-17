@@ -26,6 +26,23 @@ return require('packer').startup(function(use)
         run = "make install_jsregexp",
     })
 
+    -- Large files 
+    use({
+        "pteroctopus/faster.nvim",
+        "LunarVim/bigfile.nvim",
+        faster_config = function()
+            require("faster").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end,
+        bigfile_config = function()
+            require("bigfile").setup {
+            }
+        end
+    })
+
     use 'hrsh7th/nvim-cmp'
     -- broken with *
     use 'hrsh7th/cmp-cmdline'
@@ -39,6 +56,9 @@ return require('packer').startup(function(use)
 
     use {
         'neovim/nvim-lspconfig',
+	config = function()
+	    require('lspconfig')
+	end,
         requires = {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
