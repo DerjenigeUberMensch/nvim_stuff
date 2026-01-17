@@ -125,6 +125,12 @@ return require('packer').startup(function(use)
     }
     --Show tabs
     use "lukas-reineke/indent-blankline.nvim"
+
+    -- smooth scrool
+    --use 'karb94/neoscroll.nvim'
+
+    -- smear
+    use "sphamba/smear-cursor.nvim"
     ----------------
     if packer_bootstrap then
         require('packer').sync()
